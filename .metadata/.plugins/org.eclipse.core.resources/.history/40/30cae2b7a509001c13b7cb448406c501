@@ -1,0 +1,19 @@
+package TolearnCoding;
+
+public class Threading extends Thread {
+	int c;float d;
+	public void run(int a,int b){
+		c=a+b;
+		System.out.println("addition is :"+c);
+		
+	}
+	public void run(float x,float y){
+		d=x*y;
+		System.out.println("Multiplication is:"+d);
+	}
+	public static void main(String[] args) {
+		Threading t=new Threading();
+		t.start();
+	}
+
+}

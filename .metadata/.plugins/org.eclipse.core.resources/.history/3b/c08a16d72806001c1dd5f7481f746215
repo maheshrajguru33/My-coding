@@ -1,0 +1,18 @@
+package com.code.mahi;
+
+public class StaticInnerclass2 {
+	private String msg="Welcome to Simplilearn";
+	
+	class Inner{
+		void hello()
+		{
+			System.out.println(msg);
+			
+		}
+	}
+	public static void main(String[] args) {
+		StaticInnerclass2 obj=new StaticInnerclass2();
+		StaticInnerclass2.Inner inner=obj.new Inner();
+		inner.hello();
+	}
+}

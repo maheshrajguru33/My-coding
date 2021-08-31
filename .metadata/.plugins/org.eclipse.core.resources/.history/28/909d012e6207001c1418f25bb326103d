@@ -1,0 +1,49 @@
+package Assesment;
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class EmailValidation {
+	public static void main(String[] args) {
+		String Arr;
+        String regex = "[\\w]+@[\\w]+\\.[a-zA-Z]{2,3}";
+	    Pattern pattern = Pattern.compile(regex);
+        
+        ArrayList<String> emails= new ArrayList();
+        emails.add("simplilearn@gmail.com");
+        emails.add("manmohan123@gmail.com");
+        emails.add("amitshah@123.com");
+        emails.add("narendra123@yahoo.com");
+        emails.add("shardpawar@youtube.com");
+        emails.add("arvindkejriwal123@gmail.com");
+        emails.add("Amolkolhe123@yahoo.com");
+        emails.add("googlebhai123@gmail.com");
+        emails.add("Sanjayraut123@yahoo.com");
+        emails.add("nitingadkari123@gmail.com");
+        
+        for (Object email2 : emails) {
+           Matcher matcher = pattern.matcher((CharSequence) email2);
+           System.out.println(email2+ " : " + matcher.matches());
+           Scanner sc = new Scanner(System.in);
+           System.out.println("Enter your email: ");
+           Arr = sc.nextLine();
+           Matcher ma = pattern.matcher((CharSequence)Arr);
+           System.out.println(Arr+ " : " + ma.matches());
+           if(Arr.equals(email2))
+           {
+         	  System.out.println("Valid Email You are Logged in");
+           }
+           else
+           {
+         	  System.out.println("Invalid Email try again");
+           }
+        }
+          
+          
+   }
+   }
+      
+
+
+

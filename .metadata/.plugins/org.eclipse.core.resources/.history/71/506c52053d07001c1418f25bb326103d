@@ -1,0 +1,55 @@
+package Assesment;
+
+import java.util.Scanner;
+public class CheckingTheEmailPassword {
+	    public static void main(String[] args) {
+	        String email = null;
+	        String password = null;
+	        Boolean password_valid = false;
+	        Boolean email_valid = false;
+
+	        Scanner input = new Scanner(System.in);
+	        do {
+	            System.out.println("Enter your email: ");
+	            email = input.nextLine();
+
+	            System.out.println("Enter your passsword: ");
+	            password = input.nextLine();
+
+	            // checks for words,numbers before @symbol and between "@" and ".".
+	            // Checks only 2 or 3 alphabets after "."
+	            if (email.matches("[\\w]+@[\\w]+\\.[a-zA-Z]{2,3}"))
+	                email_valid = true;
+	            else
+	                email_valid = false;
+
+	            // checks for NOT words,numbers,underscore and whitespace.
+	            // checks if special characters present
+	            if ((password.matches(".*[^\\w\\s].*")) &&
+	            // checks alphabets present
+	                    (password.matches(".*[a-zA-Z].*")) &&
+	                    // checks numbers present
+	                    (password.matches(".*[0-9].*")) &&
+	                    // checks length
+	                    (password.length() >= 8))
+	                password_valid = true;
+	            else
+	                password_valid = false;
+
+	            if (password_valid && email_valid)
+	                System.out.println(" Welcome User!!");
+	            else {
+	                if (!email_valid)
+	                    System.out.println(" Re-enter your email: ");
+	                if (!password_valid)
+	                    System.out.println(" Re-enter your password: ");
+	            }
+
+	        } while (!email_valid || !password_valid);
+
+	        input.close();
+
+	    }
+
+	}
+}

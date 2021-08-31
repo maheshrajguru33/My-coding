@@ -1,0 +1,15 @@
+package com.code.mahi;
+import java.util.Scanner;
+public class StringDemo {
+
+	public static void main(String[] args) {
+		String s1=new String("Hello");
+		
+		System.out.println("Length of string "+s1.length());
+		String s2="Hello";
+		System.out.println(s1==s2);
+		
+		System.out.println("Compare String "+s1.compareTo(s2));
+	}
+
+}
