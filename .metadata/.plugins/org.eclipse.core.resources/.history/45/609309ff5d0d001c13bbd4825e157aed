@@ -1,0 +1,20 @@
+package Assesment;
+//import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class ReadWriteAppend {
+	public static void RWA()throws IOException{
+		File file=new File("C:\\Users\\patil\\Desktop\\Mahi\\Stream1.txt");
+		FileWriter write=new FileWriter(file);
+		write.write("The java programing is the very exciting thing which I love to do");
+		write.close();
+	   
+	}
+	
+	public static void main(String[] args)throws IOException {
+		RWA();
+	}
+}
+	
