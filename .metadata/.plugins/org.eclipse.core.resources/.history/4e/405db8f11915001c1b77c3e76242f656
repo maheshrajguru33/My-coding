@@ -1,0 +1,22 @@
+package HandlingFile;
+
+public class RecurFact {
+	
+	public static void main(String[] args) {
+		int fact=1,res,n=5;
+		RecurFact rf=new RecurFact();
+		 res=rf.calfact(n);
+		 System.out.println(res);
+		
+		int calfact(int n)
+		{
+			if(n>1)
+			{
+				fact=fact*n;
+				calfact(n-1);
+				retrun fact;
+			}
+		}
+	}
+
+}

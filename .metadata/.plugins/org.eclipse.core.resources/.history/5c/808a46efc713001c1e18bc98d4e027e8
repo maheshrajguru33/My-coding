@@ -1,0 +1,14 @@
+package HandlingFile;
+import java.io.File;
+public class ListandDelete {
+	public static void main(String[] args) {
+		File file=new File("Apple");
+		
+		String [] arr=file.list();
+		
+		for(String tmp:arr){
+			System.out.println(tmp);
+		}
+	}
+
+}

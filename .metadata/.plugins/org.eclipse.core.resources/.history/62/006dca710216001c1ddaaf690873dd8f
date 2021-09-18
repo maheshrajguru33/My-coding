@@ -1,0 +1,234 @@
+package MajorProject;
+import java.io.*;
+import java.util.*;
+
+class Mobile implements Serializable{
+	int model;
+	int price;
+	String coName;
+	Mobile(int model,int price,String coName)throws Exception{
+		this.model=model;
+		this.coName=coName;
+		this.price=price;
+	}
+	public String toString(){
+		return model+" "+coName+" "+price;
+	}
+}
+
+public class LockedMe {
+	public static void main(String[] args)throws Exception{
+		System.out.println("*************************************************");
+		System.out.println("@LockedMe__ProFunctions....");
+		System.out.println("Developed by Mahesh Rajguru");
+		System.out.println("*************************************************");
+		
+		int choice= -1, Operation=-1;
+		String fname;
+		ArrayList<Mobile> Mo=new ArrayList<Mobile>();
+		ObjectOutputStream oos=null;
+		ObjectInputStream ois=null;
+		ListIterator li=null;
+		
+		
+		do{	
+		Scanner s=new Scanner(System.in);
+		Scanner s1=new Scanner(System.in);
+		
+		
+		System.out.println("1. Display All Files and Folder from current Location:");
+		System.out.println("2. Create Text,Excel,Doc,Pdf,Ppt files:");
+		System.out.println("3. Sort Files from the Directory:");
+		System.out.println("4. Delete File:");
+		System.out.println("5. Search File:");
+		System.out.println("0. Exit:");
+		System.out.println("Choose your chice to Perform Functions>>>");
+		choice=s.nextInt();
+		
+		
+		switch(choice){
+		case 1:
+			File file=new File("D:\\Programming\\Java programs\\Phase1Project");
+			
+			String [] arr=file.list();
+			
+			 	for(String tmp:arr){
+				System.out.println(tmp);
+			 	}
+		break;
+		
+		case 2:
+			
+			Scanner sc=new Scanner(System.in);   
+			System.out.println("Enter the File name: ");
+			String name=sc.nextLine();
+			FileOutputStream fos=new FileOutputStream(name, true);
+			System.out.println("File created successfuly");
+			fos.close();
+			
+		break;	
+		case 3:
+			File directoryPath = new File("D:\\Programming\\Java programs\\Phase1Project");
+		      FilenameFilter textFilefilter = new FilenameFilter(){
+		         public boolean accept(File dir, String name) {
+		            String lowercaseName = name.toLowerCase();
+		            if (lowercaseName.endsWith(".txt")||lowercaseName.endsWith(".doc")||lowercaseName.endsWith(".xlsx")
+		            		||lowercaseName.endsWith(".pdf")||lowercaseName.endsWith(".pptx")) {
+		               return true;
+		            } else {
+		               return false;
+		            }
+		         }
+		      };
+		      
+		      String filesList[] = directoryPath.list(textFilefilter);
+		      System.out.println("List of the text files in the specified directory:");
+		      for(String fileName : filesList) {
+		         System.out.println(fileName);
+		      }
+		  break;
+		case 4:
+			System.out.print("Enter File Name with Extention to Delete  : ");
+			fname=s1.nextLine();
+						
+			try
+		      {
+				BufferedReader red = new BufferedReader(new FileReader(fname));
+			         red.close();
+			       
+			         if(false)
+			         	System.out.println(fname.equals(fname));
+			         {
+			        	 (new File(fname)).delete();
+			        	 System.out.println("file deleted succusfully");
+			        	 
+			         }
+			      }
+			      catch(IOException e)
+			      {
+			            System.out.println("Exception Occurred : " + e);
+			            System.out.println("File does not exist...!!");
+			      }
+		        
+		break;
+		case 5:
+			System.out.print("Enter File Name with Extention to search  : ");
+			fname=s1.nextLine();
+			
+			try
+		      {
+		         BufferedReader red = new BufferedReader(new FileReader(fname));
+		         red.close();
+		         File f=new File("D:\\Programming\\Java programs\\Phase1Project");
+
+		         if(false)
+		         	System.out.println(fname.equals(fname));
+		         {
+		        	 
+		        	 System.out.println("file exists");
+		        	 
+		         }
+				 	
+
+		      }
+		      catch(IOException e)
+		      {
+		            System.out.println("Exception Occurred : " + e);
+		            System.out.println("File does not exist...!!");
+		      }
+			do{
+				oos=new ObjectOutputStream(new FileOutputStream(fname));
+				oos.writeObject(Mo);
+				oos.close();
+				System.out.println("Enter choice to operate file you created or searched");
+				System.out.println("1.Write Data for a file");
+				System.out.println("2.Display Data from a file");
+				System.out.println("3.Update Data to a file");
+				System.out.println("4.Delete Data from a file");
+				System.out.println("5.Sort Data of a file");
+				
+				Operation=s.nextInt();
+			
+			switch(Operation){
+			case 1:
+			System.out.println("Enter Numbre of Mobiles Details to store:");
+			int n=s.nextInt();
+			for(int i=0;i<n;i++){
+				
+			System.out.println("Enter Name of Mobile company:");
+			String coName=s1.nextLine();
+			
+			System.out.println("Enter Model number:");
+			int model=s.nextInt();
+			
+			System.out.println("Enter Price:");
+			int price=s.nextInt();
+			
+			Mo.add(new Mobile(model,price,coName));
+			}
+			oos=new ObjectOutputStream(new FileOutputStream(fname));
+			oos.writeObject(Mo);
+			oos.close();
+			break;
+			
+			case 2:
+				oos=new ObjectOutputStream(new FileOutputStream(fname));
+				oos.writeObject(Mo);
+				oos.close();
+				try{
+				BufferedReader red = new BufferedReader(new FileReader(fname));
+		         red.close();
+				ois = new ObjectInputStream(new FileInputStream(fname));
+				Mo = (ArrayList<Mobile>)ois.readObject();
+		         li = Mo.listIterator();
+		         while(li.hasNext())
+						System.out.println(li.next());
+		         }
+		         catch(IOException e){
+		         
+		        	 System.out.println("File not found");
+		         }
+			break;
+			case 3:
+				oos=new ObjectOutputStream(new FileOutputStream(fname));
+				oos.writeObject(Mo);
+				oos.close();
+				
+					ois = new ObjectInputStream(new FileInputStream(fname));
+					Mo = (ArrayList<Mobile>)ois.readObject();
+					ois.close();
+					boolean found=false;
+					System.out.println("Enter eno to Update the record");
+					int model =s.nextInt();
+					li= Mo.listIterator();
+					while(li.hasNext()){
+						Mobile m= (Mobile)li.next();
+						if(m.model==model){
+							System.out.println("Enter new coName");
+							String coName=s1.nextLine();
+							
+							System.out.println("Enter new model number");
+							 model=s.nextInt();
+							
+							System.out.println("Enter price ");
+							int price=s.nextInt();
+							
+							li.set(new Mobile(model,price,coName));
+							found=true;
+							
+							
+						}
+					
+				}
+					
+			}
+			}
+			while(Operation!=0);
+			
+		}	
+		}
+		while(choice!=0);
+		}
+	
+	}
+

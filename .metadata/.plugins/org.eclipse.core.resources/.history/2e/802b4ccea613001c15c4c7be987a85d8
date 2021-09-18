@@ -1,0 +1,11 @@
+package HandlingFile;
+import java.io.File;
+
+public class CheckFile {
+	public static void main(String[] args) {
+		File file=new File("abc.txt");
+		
+		System.out.println(file.exists());
+	}
+
+}

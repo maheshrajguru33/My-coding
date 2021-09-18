@@ -1,0 +1,13 @@
+package Learncoding;
+
+public class MainInterface {
+	
+	public static void main(String[] args) {
+		MyInterface i=()->{
+			
+		System.out.println("Mahesh is here");
+	};
+	i.sayHello();
+	}
+
+}

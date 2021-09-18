@@ -1,0 +1,32 @@
+package HandlingFile;
+import java.util.*;
+class Employee {
+	int eno;
+	String eName;
+	int Salary;
+	
+	Employee(int eno, String eName,int Salary){
+		this.eno=eno;
+		this.eName=eName;
+		this.Salary=Salary;
+	}
+	public String toString(){
+		return eno+" "+eName+" "+Salary;
+	}
+}
+class EmployeeDemo {
+	public static void main(String[] args) {
+		int choice= -1;
+		Scanner s=new Scanner(System.in);
+		Scanner s1=new Scanner(System.in);
+		do{
+			System.out.println("1. Insert:");
+			System.out.println("2. Display:");
+			System.out.println("0. Exit:");
+			System.out.println("Enter your Choice");
+			choice = s.nextInt();
+		}while(choice!=0);
+	       
+	    }
+    }
+

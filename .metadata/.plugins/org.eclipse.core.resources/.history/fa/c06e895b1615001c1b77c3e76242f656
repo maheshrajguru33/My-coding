@@ -1,0 +1,28 @@
+package HandlingFile;
+import java.util.Scanner;
+
+public int fact(int n)		
+{
+	if(n==1)
+		return 1;
+			
+	else
+			
+		return n*fact(n-1);
+			
+}	
+public class RecurFact {
+	public static void main(String[] args) {
+		int n;
+		System.out.println("Enter nuber to find Factorial:");
+		Scanner s=new Scanner(System.in);
+		n=s.nextInt();
+		RecurFact rf=new RecurFact();
+		int result=rf.fact(n);
+		System.out.println("result"+result);
+		
+
+	}		
+		
+}
+

@@ -1,0 +1,17 @@
+package HandlingFile;
+import java.io.File;
+
+public class CheckFile {
+	public static void main(String[] args) {
+		File file=new File("abc.txt");
+		
+		System.out.println(file.exists());
+		if(true){
+			System.out.println("file is Exitst");
+		}
+		else{
+			System.out.println("File not exists");
+		}
+	}
+
+}
